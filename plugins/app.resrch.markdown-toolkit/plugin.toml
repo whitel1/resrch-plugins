@@ -1,0 +1,69 @@
+manifest_version = 2
+
+[plugin]
+authors = ["Resrch"]
+categories = ["writing"]
+description = "Official runtime reference plugin: a command, a transform, an analyzer, and a script-rendered sidebar panel."
+homepage = "https://github.com/whitel1/resrch-plugins"
+id = "app.resrch.markdown-toolkit"
+keywords = ["markdown", "runtime", "reference"]
+license = "MIT"
+name = "Markdown Toolkit"
+# `Plugin.*` keys resolve wherever the host renders the name/titles; the plain
+# strings are the locale-independent fallback.
+name_key = "Plugin.app.resrch.markdown-toolkit.name"
+readme = "README.md"
+repository = "https://github.com/whitel1/resrch-plugins"
+version = "1.0.0"
+min_app_version = "0.2.0"
+
+[runtime]
+engine = "shell"
+module = "main.js"
+
+[permissions.workspace]
+read = true
+
+[permissions.kv]
+read = true
+write = true
+
+[[resources.locales]]
+locale = "en"
+path = "locales/en.yml"
+
+[[resources.locales]]
+locale = "zh-CN"
+path = "locales/zh-CN.yml"
+
+[[resources.locales]]
+locale = "ja"
+path = "locales/ja.yml"
+
+[[commands]]
+description = "Summarize the active document and surface a notification."
+id = "markdown-toolkit.summarize"
+palette = true
+title = "Summarize Active Markdown"
+title_key = "Plugin.app.resrch.markdown-toolkit.commands.summarize"
+
+[[transforms]]
+description = "Return a patch that demotes level-one headings to level two."
+id = "markdown-toolkit.normalize-headings"
+input = "document.text"
+output = "document.patch"
+title = "Normalize Markdown Headings"
+title_key = "Plugin.app.resrch.markdown-toolkit.transforms.normalize-headings"
+
+[[analyzers]]
+description = "Return diagnostics and structured output for heading style issues."
+id = "markdown-toolkit.heading-lint"
+title = "Lint Markdown Headings"
+title_key = "Plugin.app.resrch.markdown-toolkit.analyzers.heading-lint"
+
+[[panels]]
+description = "Script-rendered panel with plugin state and invocation activity."
+id = "markdown-toolkit.overview"
+placement = "sidebar"
+title = "Markdown Toolkit"
+title_key = "Plugin.app.resrch.markdown-toolkit.panels.overview"

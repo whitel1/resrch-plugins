@@ -1,0 +1,29 @@
+manifest_version = 2
+
+[plugin]
+authors = ["Resrch"]
+categories = ["themes"]
+description = "Official UI themes: Nord, Rosé Pine, and Warm Paper, derived from the product base palette."
+homepage = "https://github.com/whitel1/resrch-plugins"
+id = "app.resrch.theme-pack"
+keywords = ["theme", "dark", "light"]
+license = "MIT"
+name = "Resrch Official Themes"
+readme = "README.md"
+repository = "https://github.com/whitel1/resrch-plugins"
+version = "1.0.0"
+
+[[resources.themes]]
+id = "nord"
+label = "Nord"
+path = "themes/nord.json"
+
+[[resources.themes]]
+id = "rose-pine"
+label = "Rosé Pine"
+path = "themes/rose-pine.json"
+
+[[resources.themes]]
+id = "warm-paper"
+label = "Warm Paper"
+path = "themes/warm-paper.json"

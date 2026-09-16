@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "id": "Colorblind Safe",
+  "label": "Colorblind Safe",
+  "kind": "accessibility",
+  "roles": {
+    "chrome.document_color_border": "#e2e8f0",
+    "chrome.indent_guide": "#94a3b866",
+    "overlays.selection_background": "#3b82f673",
+    "overlays.search_match_background": "#f973167a",
+    "diagnostics.error.border": "#f97316",
+    "diagnostics.warning.border": "#facc15",
+    "diagnostics.info.border": "#3b82f6",
+    "diagnostics.hint.border": "#a855f7"
+  },
+  "metadata": {
+    "description": "Blue/orange/yellow/purple diagnostic and highlight colors that stay distinguishable under red-green color vision deficiency."
+  }
+}

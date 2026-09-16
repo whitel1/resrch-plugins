@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "plugins": [
+    {
+      "id": "app.resrch.accessibility-pack",
+      "name": "Resrch Accessibility Packs",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.accessibility-pack-1.0.0.rplugin",
+          "sha256": "2cc90d7b93e13873e72b1e56e740215c1b62fa2ce95b83000bb739b6bae0b38f",
+          "byte_size": 1242,
+          "manifest_version": 2
+        }
+      ],
+      "description": "Official editor accessibility packs: colorblind-safe diagnostics and a low-stimulus contrast set.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.0",
+        "package": "dist/app.resrch.accessibility-pack-1.0.0.rplugin",
+        "sha256": "2cc90d7b93e13873e72b1e56e740215c1b62fa2ce95b83000bb739b6bae0b38f",
+        "byte_size": 1242,
+        "manifest_version": 2
+      }
+    },
+    {
+      "id": "app.resrch.language-pack-fr",
+      "name": "Français (French) Language Pack",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.language-pack-fr-1.0.0.rplugin",
+          "sha256": "b99c613d9e55b682c6f3b04b5c9af1588e6f6999e989936b9905f470cd390869",
+          "byte_size": 4370,
+          "manifest_version": 2
+        }
+      ],
+      "description": "Official French product language pack: menus, activity center, status bar, notifications, and the about dialog.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.0",
+        "package": "dist/app.resrch.language-pack-fr-1.0.0.rplugin",
+        "sha256": "b99c613d9e55b682c6f3b04b5c9af1588e6f6999e989936b9905f470cd390869",
+        "byte_size": 4370,
+        "manifest_version": 2
+      }
+    },
+    {
+      "id": "app.resrch.markdown-toolkit",
+      "name": "Markdown Toolkit",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.markdown-toolkit-1.0.0.rplugin",
+          "sha256": "71b82795595405cf734b67c3afc1463bed6606754890466a72addab9aa3d7d21",
+          "byte_size": 5143,
+          "manifest_version": 2,
+          "min_app_version": "0.2.0"
+        }
+      ],
+      "description": "Official runtime reference plugin: a command, a transform, an analyzer, and a script-rendered sidebar panel.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.0",
+        "package": "dist/app.resrch.markdown-toolkit-1.0.0.rplugin",
+        "sha256": "71b82795595405cf734b67c3afc1463bed6606754890466a72addab9aa3d7d21",
+        "byte_size": 5143,
+        "manifest_version": 2,
+        "min_app_version": "0.2.0"
+      }
+    },
+    {
+      "id": "app.resrch.theme-pack",
+      "name": "Resrch Official Themes",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.theme-pack-1.0.0.rplugin",
+          "sha256": "fe75c23c788996e2db25aa50b8558300c1f25cd122bb9c24cd05b56a09c4753e",
+          "byte_size": 4843,
+          "manifest_version": 2
+        }
+      ],
+      "description": "Official UI themes: Nord, Rosé Pine, and Warm Paper, derived from the product base palette.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.0",
+        "package": "dist/app.resrch.theme-pack-1.0.0.rplugin",
+        "sha256": "fe75c23c788996e2db25aa50b8558300c1f25cd122bb9c24cd05b56a09c4753e",
+        "byte_size": 4843,
+        "manifest_version": 2
+      }
+    }
+  ]
+}

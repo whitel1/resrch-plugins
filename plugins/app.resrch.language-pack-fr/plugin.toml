@@ -1,0 +1,24 @@
+manifest_version = 2
+
+[plugin]
+authors = ["Resrch"]
+categories = ["language"]
+description = "Official French product language pack: menus, activity center, status bar, notifications, and the about dialog."
+homepage = "https://github.com/whitel1/resrch-plugins"
+id = "app.resrch.language-pack-fr"
+keywords = ["language", "french", "translation"]
+license = "MIT"
+name = "Français (French) Language Pack"
+name_key = "Plugin.app.resrch.language-pack-fr.name"
+readme = "README.md"
+repository = "https://github.com/whitel1/resrch-plugins"
+version = "1.0.0"
+
+[[resources.locales]]
+locale = "fr"
+path = "locales/fr.yml"
+
+[[resources.product_locales]]
+locale = "fr"
+path = "locales/product/fr.yml"
+coverage = "partial"

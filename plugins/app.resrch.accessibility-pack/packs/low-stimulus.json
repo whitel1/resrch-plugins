@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "id": "Low Stimulus",
+  "label": "Low Stimulus",
+  "kind": "accessibility",
+  "roles": {
+    "chrome.document_color_border": "#cbd5e1",
+    "chrome.indent_guide": "#94a3b84d",
+    "overlays.selection_background": "#94a3b85c",
+    "overlays.search_match_background": "#eab30854",
+    "diagnostics.error.border": "#f8717199",
+    "diagnostics.warning.border": "#fbbf2499",
+    "diagnostics.info.border": "#60a5fa99",
+    "diagnostics.hint.border": "#34d39999"
+  },
+  "metadata": {
+    "description": "Softened editor highlights and diagnostic borders for light sensitivity; lowers contrast flashes without losing the information channel."
+  }
+}

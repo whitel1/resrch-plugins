@@ -1,0 +1,41 @@
+name: plugins
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "plugins/**"
+      - "scripts/**"
+      - ".github/workflows/plugins.yml"
+  pull_request:
+    paths:
+      - "plugins/**"
+      - "scripts/**"
+      - ".github/workflows/plugins.yml"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: whitel1/resrch-app
+          path: resrch-app
+      - name: Install rdev from source
+        run: cargo install --locked --git https://github.com/whitel1/rdev rdev
+      - name: Check every plugin
+        run: scripts/check-all.sh
+      - name: Decode the generated catalog with the contract
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          python3 scripts/build_registry.py
+          python3 - <<'EOF'
+          import json, subprocess, sys, tempfile, pathlib
+          index = json.load(open('registry/index.json'))
+          with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False) as fh:
+            json.dump(index, fh)
+            path = fh.name
+          print('catalog entries:', [p['id'] for p in index['plugins']])
+          EOF
