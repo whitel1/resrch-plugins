@@ -3,8 +3,10 @@
 This repository hosts plugin **content**. The normative contract — the
 `plugin.toml` v2 schema, the shell guest API, the error envelope, and the
 registry index schema — lives in the `resrch` repository under
-`docs/plugins/`; read `plugin-guest-api.md` and `plugin-i18n-author-guide.md`
-there before your first plugin.
+`docs/plugins/`; read `plugin-guest-api.md`,
+`plugin-contract-versioning.md` (how new surface is added inside v2 through
+the additive minor channel), and `plugin-i18n-author-guide.md` before your
+first plugin.
 
 ## Quick start
 
@@ -20,13 +22,29 @@ cp -R plugins/app.resrch.markdown-toolkit plugins/<your.plugin.id>
 - plugin ids are lowercase reverse-DNS with at least one dot, and the
   directory name must equal the id.
 - runtime contributions (`[[commands]]`, `[[transforms]]`, `[[analyzers]]`,
-  `[[panels]]`) require the `[runtime]` section with `engine = "shell"`.
+  `[[panels]]`, `[[status_bar_items]]`) require the `[runtime]` section with
+  `engine = "shell"`.
+- every `[[status_bar_items]]` entry must reference a `[[commands]]` id
+  declared by the same manifest; `text` is the initial display text and the
+  plugin updates it at runtime with the `set_status_bar_item` action
+  (see the vendored SDK). Status bar items ship through the additive minor
+  channel, so declare the introducing app release via `min_app_version`.
 - resource paths stay inside the plugin root; no absolute paths, no `..`.
 - localization keys stay in the `Plugin.<your.plugin.id>.` namespace and must
   be defined in at least one contributed locale file.
 - product language packs declare honest `coverage`; `complete` fails while
   any product key is missing, and `%{placeholder}` sets must match the
   product catalog exactly.
+
+## The guest SDK
+
+Do not hand-write the invocation poll loop or error decoding. Copy
+`../sdk/resrch-plugin.js` into your plugin root and import from
+`"./resrch-plugin.js"`: it wraps the host-written `resrch.session.js` shim
+with `startInvocationLoop`, `runInvocation`, `PluginHostError`/`toHostError`
+(structured error envelopes), `makeTranslator` for `Plugin.*` keys, and
+`supportedFeatures()` for the host's `api_features()` announcement. See
+`sdk/README.md`; `plugins/app.resrch.status-kit` is the reference consumer.
 
 ## Validation
 

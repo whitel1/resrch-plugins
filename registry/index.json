@@ -76,6 +76,32 @@
       }
     },
     {
+      "id": "app.resrch.status-kit",
+      "name": "Status Kit",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.status-kit-1.0.0.rplugin",
+          "sha256": "73f9d43134c5336fd3f13e6d5348226b4e3db6f69f49af87cefdc7c3da163b20",
+          "byte_size": 6663,
+          "manifest_version": 2,
+          "min_app_version": "0.3.0"
+        }
+      ],
+      "description": "Official status bar reference plugin: a declarative status bar item whose command drives a persisted counter and a sidebar panel through the guest SDK.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.0",
+        "package": "dist/app.resrch.status-kit-1.0.0.rplugin",
+        "sha256": "73f9d43134c5336fd3f13e6d5348226b4e3db6f69f49af87cefdc7c3da163b20",
+        "byte_size": 6663,
+        "manifest_version": 2,
+        "min_app_version": "0.3.0"
+      }
+    },
+    {
       "id": "app.resrch.theme-pack",
       "name": "Resrch Official Themes",
       "versions": [

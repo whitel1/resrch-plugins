@@ -1,0 +1,63 @@
+manifest_version = 2
+
+[plugin]
+authors = ["Resrch"]
+categories = ["reference"]
+description = "Official status bar reference plugin: a declarative status bar item whose command drives a persisted counter and a sidebar panel through the guest SDK."
+homepage = "https://github.com/whitel1/resrch-plugins"
+id = "app.resrch.status-kit"
+keywords = ["status-bar", "runtime", "reference", "sdk"]
+license = "MIT"
+name = "Status Kit"
+name_key = "Plugin.app.resrch.status-kit.name"
+readme = "README.md"
+repository = "https://github.com/whitel1/resrch-plugins"
+version = "1.0.0"
+# `[[status_bar_items]]` ships through the additive minor channel; the app
+# release that parses it is 0.3.0 (see docs/plugins/plugin-contract-versioning.md
+# in the resrch repository).
+min_app_version = "0.3.0"
+
+[runtime]
+engine = "shell"
+module = "main.js"
+
+[permissions.kv]
+read = true
+write = true
+
+[[resources.locales]]
+locale = "en"
+path = "locales/en.yml"
+
+[[resources.locales]]
+locale = "zh-CN"
+path = "locales/zh-CN.yml"
+
+[[resources.locales]]
+locale = "ja"
+path = "locales/ja.yml"
+
+[[commands]]
+description = "Increment the persisted counter, refresh the status bar item, and surface a notification."
+id = "status-kit.tick"
+palette = true
+title = "Advance Status Kit Counter"
+title_key = "Plugin.app.resrch.status-kit.commands.tick"
+
+[[status_bar_items]]
+# Declarative item: the host renders the text and dispatches `command` on
+# click. The plugin replaces the text at runtime with `set_status_bar_item`.
+alignment = "right"
+command = "status-kit.tick"
+id = "status-kit.counter"
+text = "0"
+title = "Status Kit counter"
+title_key = "Plugin.app.resrch.status-kit.status_bar.counter"
+
+[[panels]]
+description = "SDK-rendered panel with the live counter and invocation stats."
+id = "status-kit.overview"
+placement = "sidebar"
+title = "Status Kit"
+title_key = "Plugin.app.resrch.status-kit.panels.overview"
