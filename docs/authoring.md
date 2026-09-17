@@ -29,6 +29,16 @@ cp -R plugins/app.resrch.markdown-toolkit plugins/<your.plugin.id>
   plugin updates it at runtime with the `set_status_bar_item` action
   (see the vendored SDK). Status bar items ship through the additive minor
   channel, so declare the introducing app release via `min_app_version`.
+- `[permissions.prompts] input = true` gates the `request_input` round trip
+  (SDK `requestInput`): the host renders an input dialog and the promise
+  resolves with the submitted text, or `null` on cancel. Gate the call on
+  `supportsFeature("request_input")`; the permission is reviewed at
+  activation like every other group.
+- `[[resources.settings]]` entries render on the settings dialog's Plugins
+  page and persist to the plugin settings file. Known gap: there is no guest
+  read of stored values yet (a future `settings_get` host call); keep
+  settings that the plugin does not need to act on at runtime, or track both
+  sides in kv until then.
 - resource paths stay inside the plugin root; no absolute paths, no `..`.
 - localization keys stay in the `Plugin.<your.plugin.id>.` namespace and must
   be defined in at least one contributed locale file.

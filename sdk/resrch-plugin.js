@@ -18,6 +18,7 @@ import {
   complete_invocation_failure,
   translate,
   api_features,
+  request_input,
 } from "./resrch.session.js";
 
 /** Prefix carrying the versioned host error envelope on rejected promises. */
@@ -215,4 +216,27 @@ export function startInvocationLoop(cx, handler, options = {}) {
     }
   });
   return stats;
+}
+
+/**
+ * Asks the user for a text value through a host modal dialog and resolves
+ * with the submitted text, or `null` when the user cancels. Requires the
+ * `prompts.input` permission, the `request_input` host API feature, and a
+ * prompt request within the presentation bounds (`title` <= 200,
+ * `message`/`placeholder`/`value` <= 4096 characters). Untyped requests
+ * resolve with `null` when the feature is missing so optional flows degrade.
+ *
+ * @param {{ title: string, message: string, placeholder?: string, value?: string }} request
+ * @returns {Promise<string | null>}
+ */
+export async function requestInput(request) {
+  if (!supportsFeature("request_input")) {
+    return null;
+  }
+  try {
+    const response = await request_input(request);
+    return response?.value ?? null;
+  } catch (error) {
+    throw toHostError(error);
+  }
 }

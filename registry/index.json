@@ -80,10 +80,10 @@
       "name": "Status Kit",
       "versions": [
         {
-          "version": "1.0.0",
-          "package": "dist/app.resrch.status-kit-1.0.0.rplugin",
-          "sha256": "73f9d43134c5336fd3f13e6d5348226b4e3db6f69f49af87cefdc7c3da163b20",
-          "byte_size": 6663,
+          "version": "1.1.0",
+          "package": "dist/app.resrch.status-kit-1.1.0.rplugin",
+          "sha256": "9f3a12025201ec3e5159da45a874165aea1f5970c45e6901839f4be9df314855",
+          "byte_size": 7904,
           "manifest_version": 2,
           "min_app_version": "0.3.0"
         }
@@ -93,10 +93,10 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.0",
-        "package": "dist/app.resrch.status-kit-1.0.0.rplugin",
-        "sha256": "73f9d43134c5336fd3f13e6d5348226b4e3db6f69f49af87cefdc7c3da163b20",
-        "byte_size": 6663,
+        "version": "1.1.0",
+        "package": "dist/app.resrch.status-kit-1.1.0.rplugin",
+        "sha256": "9f3a12025201ec3e5159da45a874165aea1f5970c45e6901839f4be9df314855",
+        "byte_size": 7904,
         "manifest_version": 2,
         "min_app_version": "0.3.0"
       }

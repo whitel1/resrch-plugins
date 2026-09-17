@@ -96,6 +96,18 @@ declare module "resrch-plugin.js" {
   export function supportedFeatures(): string[];
   export function supportsFeature(feature: string): boolean;
 
+  /**
+   * Renders a host modal input dialog; resolves with the submitted text or
+   * `null` on cancel (and when the host predates `request_input`). Requires
+   * the `prompts.input` permission.
+   */
+  export function requestInput(request: {
+    title: string;
+    message: string;
+    placeholder?: string;
+    value?: string;
+  }): Promise<string | null>;
+
   export interface InvocationStats {
     handled: number;
     lastInvocation: string | null;

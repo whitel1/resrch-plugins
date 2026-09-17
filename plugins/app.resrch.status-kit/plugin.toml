@@ -12,7 +12,7 @@ name = "Status Kit"
 name_key = "Plugin.app.resrch.status-kit.name"
 readme = "README.md"
 repository = "https://github.com/whitel1/resrch-plugins"
-version = "1.0.0"
+version = "1.1.0"
 # `[[status_bar_items]]` ships through the additive minor channel; the app
 # release that parses it is 0.3.0 (see docs/plugins/plugin-contract-versioning.md
 # in the resrch repository).
@@ -26,6 +26,10 @@ module = "main.js"
 read = true
 write = true
 
+[permissions.prompts]
+# Lets the plugin raise `request_input` dialogs; the user can cancel them.
+input = true
+
 [[resources.locales]]
 locale = "en"
 path = "locales/en.yml"
@@ -38,12 +42,31 @@ path = "locales/zh-CN.yml"
 locale = "ja"
 path = "locales/ja.yml"
 
+[[resources.settings]]
+# Contributed setting: the settings dialog renders and persists it
+# (settings.d/40-plugin-settings.toml). Guest-side consumption of stored
+# values ships with a future host call; see docs/authoring.md.
+control = "checkbox"
+default = "true"
+description = "Show a notification each time the counter advances."
+key = "notifications"
+label = "Status Kit notifications"
+order = 10
+value_type = "boolean"
+
 [[commands]]
 description = "Increment the persisted counter, refresh the status bar item, and surface a notification."
 id = "status-kit.tick"
 palette = true
 title = "Advance Status Kit Counter"
 title_key = "Plugin.app.resrch.status-kit.commands.tick"
+
+[[commands]]
+description = "Ask for a counter value with a host input dialog and apply it."
+id = "status-kit.set"
+palette = true
+title = "Set Status Kit Counter"
+title_key = "Plugin.app.resrch.status-kit.commands.set"
 
 [[status_bar_items]]
 # Declarative item: the host renders the text and dispatches `command` on

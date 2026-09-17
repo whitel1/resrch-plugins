@@ -18,6 +18,7 @@ import { kv_get, kv_put, log } from "./resrch.session.js";
 import {
   INVOCATION_WAKE_ACTION,
   makeTranslator,
+  requestInput,
   runInvocation,
   startInvocationLoop,
   supportedFeatures,
@@ -72,11 +73,23 @@ export default class StatusKitPanel extends View {
    */
   async dispatch(request, cx) {
     const invocation = request.invocation ?? {};
-    if (invocation.kind !== "command" || invocation.command_id !== "status-kit.tick") {
+    if (invocation.kind !== "command") {
       log("warn", `Status Kit ignored invocation ${invocation.kind ?? "unknown"}`);
       return;
     }
+    switch (invocation.command_id) {
+      case "status-kit.tick":
+        return this.tick(cx);
+      case "status-kit.set":
+        return this.setCounter();
+      default:
+        log("warn", `Status Kit ignored command ${invocation.command_id ?? "unknown"}`);
+        return;
+    }
+  }
 
+  /** Advances the counter and refreshes the status bar item. @param {Context} cx */
+  async tick(cx) {
     this.count += 1;
     const count = this.count;
     try {
@@ -86,7 +99,56 @@ export default class StatusKitPanel extends View {
       log("warn", `Status Kit could not persist its counter: ${error?.message ?? error}`);
     }
     cx.notify();
+    return this.counterResponse(count, t("notifications.ticked", `Counter advanced to ${count}.`));
+  }
 
+  /**
+   * Round trip: the host renders an input dialog and the promise resolves
+   * with the submitted text — `null` when the user cancels. Guest-side reads
+   * of contributed settings values ship with a future host call.
+   */
+  async setCounter() {
+    const raw = await requestInput({
+      title: t("prompt.title", "Status Kit"),
+      message: t("prompt.message", "Set the counter to a whole number."),
+      placeholder: "0",
+      value: String(this.count),
+    });
+    if (raw === null) {
+      return;
+    }
+    const parsed = Number.parseInt(raw.trim(), 10);
+    if (!Number.isFinite(parsed)) {
+      return {
+        actions: [
+          {
+            kind: "show_notification",
+            payload: {
+              notification: {
+                level: "warning",
+                message: t("notifications.invalid", `"${raw}" is not a whole number.`),
+              },
+            },
+          },
+        ],
+        output: null,
+        diagnostics: [],
+      };
+    }
+    this.count = parsed;
+    try {
+      await kv_put(COUNT_KEY, String(this.count));
+    } catch (error) {
+      log("warn", `Status Kit could not persist its counter: ${error?.message ?? error}`);
+    }
+    return this.counterResponse(
+      this.count,
+      t("notifications.set", `Counter set to ${this.count}.`),
+    );
+  }
+
+  /** @param {number} count @param {string} message */
+  counterResponse(count, message) {
     return {
       actions: [
         {
@@ -98,10 +160,7 @@ export default class StatusKitPanel extends View {
         {
           kind: "show_notification",
           payload: {
-            notification: {
-              level: "success",
-              message: t("notifications.ticked", `Counter advanced to ${count}.`),
-            },
+            notification: { level: "success", message },
           },
         },
       ],
