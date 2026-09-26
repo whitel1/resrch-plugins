@@ -19,6 +19,7 @@ plugins/
   app.resrch.theme-pack/           # Nord, Rosé Pine, Warm Paper UI themes
   app.resrch.accessibility-pack/   # colorblind-safe & low-stimulus editor packs
   app.resrch.language-pack-fr/     # French product language pack (partial)
+  app.resrch.language-pack-zh-hant # Traditional Chinese pack (complete; zh-CN fallback chain)
 sdk/
   resrch-plugin.js          # vendored guest SDK (copy into your plugin root)
   resrch-plugin.d.ts        # types for the SDK and the host-written shim

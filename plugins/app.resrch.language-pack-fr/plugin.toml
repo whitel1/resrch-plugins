@@ -12,11 +12,7 @@ name = "Français (French) Language Pack"
 name_key = "Plugin.app.resrch.language-pack-fr.name"
 readme = "README.md"
 repository = "https://github.com/whitel1/resrch-plugins"
-version = "1.0.0"
-
-[[resources.locales]]
-locale = "fr"
-path = "locales/fr.yml"
+version = "1.0.1"
 
 [[resources.product_locales]]
 locale = "fr"

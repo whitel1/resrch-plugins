@@ -44,7 +44,9 @@ cp -R plugins/app.resrch.markdown-toolkit plugins/<your.plugin.id>
   be defined in at least one contributed locale file.
 - product language packs declare honest `coverage`; `complete` fails while
   any product key is missing, and `%{placeholder}` sets must match the
-  product catalog exactly.
+  product catalog exactly. `app.resrch.language-pack-zh-hant` is the
+  complete-coverage exemplar; a pack split across several files is fine —
+  coverage is validated over the merged locale.
 
 ## The guest SDK
 
