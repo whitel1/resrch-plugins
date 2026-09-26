@@ -15,5 +15,13 @@ themes so code stays readable. The themes are derived from the product base
 palette (neutrals snapped to a per-theme lightness ramp, accents re-hued per
 family), which keeps active/hover/on-color relationships intact.
 
+## Syntax-only source
+
+`Soft Dusk Syntax` is a syntax-only highlight source (`[[resources.syntax_themes]]`):
+editor chrome plus syntax scope colors that compose with **any** base theme,
+selected independently under **Settings → Appearance → Syntax theme**. It
+ships through the additive minor channel (`syntax_themes` feature), so the
+manifest pins `min_app_version = "0.3.0"`.
+
 Theme files are picked up from the installed plugin directory and hot-reload
 when the plugin set changes; use **Settings → Appearance** to select one.

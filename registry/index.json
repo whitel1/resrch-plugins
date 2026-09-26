@@ -130,23 +130,25 @@
       "name": "Resrch Official Themes",
       "versions": [
         {
-          "version": "1.0.0",
-          "package": "dist/app.resrch.theme-pack-1.0.0.rplugin",
-          "sha256": "fe75c23c788996e2db25aa50b8558300c1f25cd122bb9c24cd05b56a09c4753e",
-          "byte_size": 4843,
-          "manifest_version": 2
+          "version": "1.1.0",
+          "package": "dist/app.resrch.theme-pack-1.1.0.rplugin",
+          "sha256": "4125e1b6066e63b03312b719b789c1fa139b29ea5f9424895e2b9501dc984356",
+          "byte_size": 5350,
+          "manifest_version": 2,
+          "min_app_version": "0.3.0"
         }
       ],
-      "description": "Official UI themes: Nord, Rosé Pine, and Warm Paper, derived from the product base palette.",
+      "description": "Official UI themes: Nord, Rosé Pine, and Warm Paper, plus the Soft Dusk syntax-only source.",
       "license": "MIT",
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.0",
-        "package": "dist/app.resrch.theme-pack-1.0.0.rplugin",
-        "sha256": "fe75c23c788996e2db25aa50b8558300c1f25cd122bb9c24cd05b56a09c4753e",
-        "byte_size": 4843,
-        "manifest_version": 2
+        "version": "1.1.0",
+        "package": "dist/app.resrch.theme-pack-1.1.0.rplugin",
+        "sha256": "4125e1b6066e63b03312b719b789c1fa139b29ea5f9424895e2b9501dc984356",
+        "byte_size": 5350,
+        "manifest_version": 2,
+        "min_app_version": "0.3.0"
       }
     }
   ]

@@ -19,6 +19,8 @@ import {
   translate,
   api_features,
   request_input,
+  list_themes,
+  current_theme,
 } from "./resrch.session.js";
 
 /** Prefix carrying the versioned host error envelope on rejected promises. */
@@ -141,6 +143,37 @@ export function supportedFeatures() {
  */
 export function supportsFeature(feature) {
   return supportedFeatures().includes(feature);
+}
+
+/**
+ * Lists the base themes the host currently offers (name + light/dark mode).
+ * Requires the `theme_query` host feature; returns null on older hosts.
+ *
+ * @returns {{ name: string, mode: "light" | "dark" }[] | null}
+ */
+export function listThemes() {
+  if (!supportsFeature("theme_query")) return null;
+  try {
+    return list_themes() ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The theme the host currently has applied, or null on older hosts / before
+ * the shell published its first snapshot. Requires the `theme_query` host
+ * feature.
+ *
+ * @returns {{ name: string, mode: "light" | "dark" } | null}
+ */
+export function currentTheme() {
+  if (!supportsFeature("theme_query")) return null;
+  try {
+    return current_theme() ?? null;
+  } catch {
+    return null;
+  }
 }
 
 /**

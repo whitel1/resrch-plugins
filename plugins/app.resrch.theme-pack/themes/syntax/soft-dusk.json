@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "id": "Soft Dusk Syntax",
+  "label": "Soft Dusk Syntax",
+  "appearance": "dark",
+  "highlight": {
+    "editor.foreground": "#d6d3d1",
+    "editor.background": "#1c1917",
+    "syntax": {
+      "comment": {
+        "color": "#78716c",
+        "font_style": "italic"
+      },
+      "constant": {
+        "color": "#d8b4fe"
+      },
+      "function": {
+        "color": "#fcd34d"
+      },
+      "keyword": {
+        "color": "#f0abfc"
+      },
+      "link_text": {
+        "color": "#7dd3fc"
+      },
+      "number": {
+        "color": "#c4b5fd"
+      },
+      "property": {
+        "color": "#fdba74"
+      },
+      "string": {
+        "color": "#86efac"
+      },
+      "text.literal": {
+        "color": "#fca5a5"
+      },
+      "type": {
+        "color": "#93c5fd"
+      }
+    }
+  },
+  "metadata": {
+    "description": "Syntax-only highlight source with a warm dusk palette; composes with any base theme."
+  }
+}

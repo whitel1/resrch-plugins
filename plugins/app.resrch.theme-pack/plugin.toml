@@ -3,15 +3,16 @@ manifest_version = 2
 [plugin]
 authors = ["Resrch"]
 categories = ["themes"]
-description = "Official UI themes: Nord, Rosé Pine, and Warm Paper, derived from the product base palette."
+description = "Official UI themes: Nord, Rosé Pine, and Warm Paper, plus the Soft Dusk syntax-only source."
 homepage = "https://github.com/whitel1/resrch-plugins"
 id = "app.resrch.theme-pack"
-keywords = ["theme", "dark", "light"]
+keywords = ["theme", "dark", "light", "syntax"]
 license = "MIT"
 name = "Resrch Official Themes"
 readme = "README.md"
 repository = "https://github.com/whitel1/resrch-plugins"
-version = "1.0.0"
+version = "1.1.0"
+min_app_version = "0.3.0"
 
 [[resources.themes]]
 id = "nord"
@@ -27,3 +28,6 @@ path = "themes/rose-pine.json"
 id = "warm-paper"
 label = "Warm Paper"
 path = "themes/warm-paper.json"
+
+[[resources.syntax_themes]]
+path = "themes/syntax/soft-dusk.json"

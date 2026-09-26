@@ -5,8 +5,8 @@ This repository hosts plugin **content**. The normative contract — the
 registry index schema — lives in the `resrch` repository under
 `docs/plugins/`; read `plugin-guest-api.md`,
 `plugin-contract-versioning.md` (how new surface is added inside v2 through
-the additive minor channel), and `plugin-i18n-author-guide.md` before your
-first plugin.
+the additive minor channel), `plugin-i18n-author-guide.md`, and
+`plugin-theme-author-guide.md` before your first plugin.
 
 ## Quick start
 
@@ -47,6 +47,24 @@ cp -R plugins/app.resrch.markdown-toolkit plugins/<your.plugin.id>
   product catalog exactly. `app.resrch.language-pack-zh-hant` is the
   complete-coverage exemplar; a pack split across several files is fine —
   coverage is validated over the merged locale.
+- `[[resources.themes]]` names must be unique: names reserved by the product
+  catalog (the bundled product themes plus the vendored upstream set) and
+  names duplicated across the plugin's own theme documents fail the check —
+  the host catalog rebuilds from the live document set on every sync, so a
+  duplicate is reported as an error instead of loading. Light/dark variants
+  pair by family suffix (`" My Family Light"`/`" My Family Dark"`);
+  documents load per manifest declaration, and edits, renames, and
+  disable/uninstall take effect without an app restart.
+  `[[resources.theme_packs]]` documents are validated for version/roles/
+  colors, and their ids cannot reuse the bundled pack ids (`Default Editor`,
+  `High Contrast`). `[[resources.syntax_themes]]` ships syntax-only
+  highlight sources through the additive minor channel (`syntax_themes`
+  feature — pin `min_app_version`); ids cannot shadow the bundled
+  `Resrch Minimal Syntax`. Runtime plugins can read the theme state with the
+  `theme_query` host feature (SDK `listThemes()`/`currentTheme()`). Load
+  results (registered, refreshed, shadowed names, failures) surface per
+  plugin in the Extensions panel. Full rules and format reference:
+  `plugin-theme-author-guide.md` in the `resrch` repository.
 
 ## The guest SDK
 

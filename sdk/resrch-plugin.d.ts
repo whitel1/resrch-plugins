@@ -36,6 +36,10 @@ declare module "resrch.session.js" {
   export function secret_get(name: string): Promise<{ value: string | null }>;
   /** Resolves a `Plugin.*` key in the active locale; null when undefined. */
   export function translate(key: string): string | null;
+  /** Read-only theme introspection: every offered base theme. */
+  export function list_themes(): { name: string; mode: "light" | "dark" }[];
+  /** Read-only theme introspection: the applied base theme. */
+  export function current_theme(): { name: string; mode: "light" | "dark" } | null;
   /** Host API feature strings the running host implements. */
   export function api_features(): string[];
 }
@@ -95,6 +99,16 @@ declare module "resrch-plugin.js" {
   export function makeTranslator(keyPrefix: string): (key: string, fallback: string) => string;
   export function supportedFeatures(): string[];
   export function supportsFeature(feature: string): boolean;
+  /**
+   * Lists the host's offered base themes; null when the host predates the
+   * `theme_query` feature.
+   */
+  export function listThemes(): { name: string; mode: "light" | "dark" }[] | null;
+  /**
+   * The currently applied base theme; null on older hosts or before the
+   * shell published its first snapshot.
+   */
+  export function currentTheme(): { name: string; mode: "light" | "dark" } | null;
 
   /**
    * Renders a host modal input dialog; resolves with the submitted text or
