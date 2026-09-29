@@ -81,13 +81,20 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.1",
-        "package": "dist/app.resrch.language-pack-zh-hant-1.0.1.rplugin",
-        "sha256": "ccb822337f0f955646865c12eef2a3c7fc053f45182a425066eb725a971799b3",
-        "byte_size": 46391,
+        "version": "1.0.2",
+        "package": "dist/app.resrch.language-pack-zh-hant-1.0.2.rplugin",
+        "sha256": "b814f0b6e64feb6f4297ec76226a49b566e34c1f8e9f8287553baf155d079e7d",
+        "byte_size": 46392,
         "manifest_version": 2
       },
       "versions": [
+        {
+          "version": "1.0.2",
+          "package": "dist/app.resrch.language-pack-zh-hant-1.0.2.rplugin",
+          "sha256": "b814f0b6e64feb6f4297ec76226a49b566e34c1f8e9f8287553baf155d079e7d",
+          "byte_size": 46392,
+          "manifest_version": 2
+        },
         {
           "version": "1.0.1",
           "package": "dist/app.resrch.language-pack-zh-hant-1.0.1.rplugin",

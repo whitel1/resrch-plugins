@@ -19,7 +19,7 @@ setting stays empty to keep following the platform).
 ## Regeneration
 
 The catalog is generated from the zh-CN product catalog with OpenCC `s2twp`
-plus a terminology pass (檔案/設定/預設/支援/列印/匯入/匯出/後台/目前/拖曳…).
+plus a terminology pass (檔案/設定/預設/支援/列印/匯入/匯出/後台/目前/拖曳/權限…).
 Character conversion is mechanical; nuanced strings should still get a human
 terminology review:
 
