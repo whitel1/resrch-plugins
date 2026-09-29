@@ -126,3 +126,13 @@ accepts them solely through the `RESRCH_PLUGIN_REGISTRY_URL` override.
    resource packs,
 4. keep `plugin.toml` metadata accurate (`description`, `license`,
    `repository`); the registry index mirrors it verbatim.
+
+## Documentation
+
+The website publishes the condensed, always-current versions of these docs:
+[Plugin development](https://resrch.ai/en/docs/development/plugins/) (manifest
+and permissions),
+[runtime](https://resrch.ai/en/docs/development/plugin-runtime/), and
+[registry and distribution](https://resrch.ai/en/docs/development/plugin-registry/)
+plus the generated [official plugin catalog](https://resrch.ai/en/docs/reference/plugin-catalog/)
+listing. This file stays the working copy inside the repository.

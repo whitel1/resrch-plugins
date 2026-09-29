@@ -68,6 +68,16 @@ Open a PR adding `plugins/community/<your-plugin-id>/`. CI must pass
 declared resources. See `docs/authoring.md` for the manifest rules, the
 `Plugin.*` localization namespace, and the packaging checklist.
 
+## Documentation
+
+User-facing documentation lives on the website: the
+[plugin registry and distribution](https://resrch.ai/en/docs/development/plugin-registry/)
+page summarizes this repository's catalog rules, signing, and publishing
+pipeline (Chinese: [插件注册表与分发](https://resrch.ai/zh-cn/docs/development/plugin-registry/)),
+and the [official plugin catalog](https://resrch.ai/en/docs/reference/plugin-catalog/)
+listing is regenerated from `registry/index.json` on every change. This
+README and `docs/authoring.md` remain the repository-side working documents.
+
 ## License
 
 MIT, see `LICENSE-MIT`. By submitting a plugin you license it under MIT as
