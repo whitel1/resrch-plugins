@@ -86,14 +86,17 @@ rdev plugin check --manifest ../resrch-app/i18n.toml plugins/<id>
 ## Publishing (official plugins)
 
 ```bash
-python3 scripts/build_registry.py
+python3 scripts/build_registry.py           # check, package, merge the index
+python3 scripts/build_registry.py --verify  # validate pins against dist/
 ```
 
-regenerates `dist/*.rplugin` and `registry/index.json`. Publishing then
-attaches the packages to a GitHub release for the catalog version; the
-index's `package` field points at the release asset (or a catalog-relative
-path for static hosting). Packages are immutable per `(id, version)` —
-changing content means bumping the version.
+The catalog is append-only: committed `dist/*.rplugin` artifacts are reused
+for already-pinned versions, a new version must be strictly newer than the
+published latest, and any change under a pinned `(id, version)` — package
+content or `min_app_version` — fails the build, so bump the version instead.
+Entry metadata (name, description, …) refreshes without a bump. A push to
+`main` deploys the index and packages to GitHub Pages, which is the default
+source the in-app marketplace fetches.
 
 ## Community submissions
 

@@ -6,17 +6,35 @@ on:
     paths:
       - "plugins/**"
       - "scripts/**"
+      - "registry/**"
+      - "dist/**"
       - ".github/workflows/plugins.yml"
   pull_request:
     paths:
       - "plugins/**"
       - "scripts/**"
+      - "registry/**"
+      - "dist/**"
       - ".github/workflows/plugins.yml"
   workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One catalog deployment at a time; a queued push waits instead of cancelling
+# a partially uploaded registry.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
@@ -27,15 +45,28 @@ jobs:
         run: cargo install --locked --git https://github.com/whitel1/rdev rdev
       - name: Check every plugin
         run: scripts/check-all.sh
-      - name: Decode the generated catalog with the contract
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Rebuild packages and merge the registry index
+        run: python3 scripts/build_registry.py
+      - name: Verify catalog pins and dist layout
+        run: python3 scripts/build_registry.py --verify
+      # The in-app marketplace fetches registry/index.json from this site
+      # (DEFAULT_REGISTRY_INDEX_URL in resrch-app) and resolves package paths
+      # relative to it, so the index and dist/ must ship together.
+      - name: Stage the catalog site
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: |
-          python3 scripts/build_registry.py
-          python3 - <<'EOF'
-          import json, subprocess, sys, tempfile, pathlib
-          index = json.load(open('registry/index.json'))
-          with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False) as fh:
-            json.dump(index, fh)
-            path = fh.name
-          print('catalog entries:', [p['id'] for p in index['plugins']])
-          EOF
+          mkdir -p _site/registry _site/dist
+          cp registry/index.json _site/registry/
+          cp dist/*.rplugin _site/dist/
+      - name: Configure Pages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v5
+      - name: Upload the catalog site
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy the catalog site
+        id: deployment
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/deploy-pages@v4

@@ -30,6 +30,13 @@
       "name": "Français (French) Language Pack",
       "versions": [
         {
+          "version": "1.0.2",
+          "package": "dist/app.resrch.language-pack-fr-1.0.2.rplugin",
+          "sha256": "a060d96b781bcefca13e62bb6bffb3dbc485c1c44190c4ae06b8af63abd0d7dd",
+          "byte_size": 4292,
+          "manifest_version": 2
+        },
+        {
           "version": "1.0.1",
           "package": "dist/app.resrch.language-pack-fr-1.0.1.rplugin",
           "sha256": "50a4b270ba73ba1c5325fa50f599dec90c904629e2bd830a38677233fe0690f3",
@@ -42,10 +49,10 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.1",
-        "package": "dist/app.resrch.language-pack-fr-1.0.1.rplugin",
-        "sha256": "50a4b270ba73ba1c5325fa50f599dec90c904629e2bd830a38677233fe0690f3",
-        "byte_size": 4332,
+        "version": "1.0.2",
+        "package": "dist/app.resrch.language-pack-fr-1.0.2.rplugin",
+        "sha256": "a060d96b781bcefca13e62bb6bffb3dbc485c1c44190c4ae06b8af63abd0d7dd",
+        "byte_size": 4292,
         "manifest_version": 2
       }
     },
@@ -53,6 +60,13 @@
       "id": "app.resrch.language-pack-zh-hant",
       "name": "繁體中文 (Traditional Chinese) Language Pack",
       "versions": [
+        {
+          "version": "1.0.1",
+          "package": "dist/app.resrch.language-pack-zh-hant-1.0.1.rplugin",
+          "sha256": "ccb822337f0f955646865c12eef2a3c7fc053f45182a425066eb725a971799b3",
+          "byte_size": 46391,
+          "manifest_version": 2
+        },
         {
           "version": "1.0.0",
           "package": "dist/app.resrch.language-pack-zh-hant-1.0.0.rplugin",
@@ -66,10 +80,10 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.0",
-        "package": "dist/app.resrch.language-pack-zh-hant-1.0.0.rplugin",
-        "sha256": "1bf3d5ab932f5cf9b060a22daac068118c08199104dd4caaaf8c9ea0883b1bb4",
-        "byte_size": 44084,
+        "version": "1.0.1",
+        "package": "dist/app.resrch.language-pack-zh-hant-1.0.1.rplugin",
+        "sha256": "ccb822337f0f955646865c12eef2a3c7fc053f45182a425066eb725a971799b3",
+        "byte_size": 46391,
         "manifest_version": 2
       }
     },
