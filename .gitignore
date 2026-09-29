@@ -1,3 +1,4 @@
 target/
 .DS_Store
 _site/
+registry/index.sig.json

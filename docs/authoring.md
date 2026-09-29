@@ -110,8 +110,12 @@ for already-pinned versions, a new version must be strictly newer than the
 published latest, and any change under a pinned `(id, version)` — package
 content or `min_app_version` — fails the build, so bump the version instead.
 Entry metadata (name, description, categories, keywords, permissions …)
-refreshes without a bump. A push to `main` deploys the index and packages to
-GitHub Pages, which is the default source the in-app marketplace fetches.
+refreshes without a bump. A push to `main` signs the index (Ed25519,
+`registry/index.sig.json`; see `registry/README.md`) and deploys the index
+plus packages to GitHub Pages, which is the default source the in-app
+marketplace fetches — the app verifies the signature before trusting the
+catalog. Local unsigned builds are development-only catalogs; the app
+accepts them solely through the `RESRCH_PLUGIN_REGISTRY_URL` override.
 
 ## Community submissions
 

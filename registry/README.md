@@ -20,3 +20,16 @@ silently drop it.
 CI deploys `registry/index.json` plus `dist/` to GitHub Pages on every push
 to `main`; the in-app marketplace fetches the index from that site and
 resolves the relative `dist/…` package paths against it.
+
+## Signing
+
+Deployments sign the catalog with Ed25519: `rdev plugin index --signing-key
+… --key-id plugin-catalog-2026-09` writes the detached signature
+`index.sig.json` beside the index, and CI verifies it against the pinned
+public key (`OX3DVL0jACLzomauo5DqJaAt/aZdbrECRVQ8Ng13iSE=`) before staging
+the site. The app requires a valid signature for the default catalog URL
+before trusting the index and its package pins; private/local registries set
+through `RESRCH_PLUGIN_REGISTRY_URL` may stay unsigned. The private half of
+the key lives only in this repository's `PLUGIN_CATALOG_SIGNING_KEY` secret
+(generated with `rdev plugin keygen`); rotation ships a new key id with an
+app update.
