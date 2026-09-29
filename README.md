@@ -32,7 +32,8 @@ docs/authoring.md           # how to write and submit a plugin
 
 Every directory under `plugins/` is one plugin, named after its manifest id.
 Community submissions land in the same tree through review; the registry
-builder records the maintainer set per entry.
+builder (`rdev plugin index`, owned by the `rdev` toolchain and typed by the
+`plugin-registry-index-v1` contract) records the maintainer set per entry.
 
 ## Plugin kinds
 
@@ -48,11 +49,11 @@ builder records the maintainer set per entry.
 # full contract + locale validation (needs the resrch-app checkout beside this one)
 scripts/check-all.sh
 
-# check + package every plugin and merge registry/index.json
-python3 scripts/build_registry.py
+# check + package every plugin and merge registry/index.json (same gates, one command)
+rdev plugin index --manifest ../resrch-app/i18n.toml
 
-# validate the committed catalog: pins match dist/, no orphans
-python3 scripts/build_registry.py --verify
+# validate the committed catalog with the registry contract: pins match dist/, no orphans
+rdev plugin index --verify
 ```
 
 `.rplugin` packages are immutable per `(id, version)` and committed under

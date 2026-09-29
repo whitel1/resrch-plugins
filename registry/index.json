@@ -4,15 +4,6 @@
     {
       "id": "app.resrch.accessibility-pack",
       "name": "Resrch Accessibility Packs",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "package": "dist/app.resrch.accessibility-pack-1.0.0.rplugin",
-          "sha256": "2cc90d7b93e13873e72b1e56e740215c1b62fa2ce95b83000bb739b6bae0b38f",
-          "byte_size": 1242,
-          "manifest_version": 2
-        }
-      ],
       "description": "Official editor accessibility packs: colorblind-safe diagnostics and a low-stimulus contrast set.",
       "license": "MIT",
       "homepage": "https://github.com/whitel1/resrch-plugins",
@@ -23,11 +14,40 @@
         "sha256": "2cc90d7b93e13873e72b1e56e740215c1b62fa2ce95b83000bb739b6bae0b38f",
         "byte_size": 1242,
         "manifest_version": 2
-      }
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.accessibility-pack-1.0.0.rplugin",
+          "sha256": "2cc90d7b93e13873e72b1e56e740215c1b62fa2ce95b83000bb739b6bae0b38f",
+          "byte_size": 1242,
+          "manifest_version": 2
+        }
+      ],
+      "categories": [
+        "accessibility",
+        "themes"
+      ],
+      "keywords": [
+        "accessibility",
+        "editor",
+        "contrast"
+      ]
     },
     {
       "id": "app.resrch.language-pack-fr",
       "name": "Français (French) Language Pack",
+      "description": "Official French product language pack: menus, activity center, status bar, notifications, and the about dialog.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.2",
+        "package": "dist/app.resrch.language-pack-fr-1.0.2.rplugin",
+        "sha256": "a060d96b781bcefca13e62bb6bffb3dbc485c1c44190c4ae06b8af63abd0d7dd",
+        "byte_size": 4292,
+        "manifest_version": 2
+      },
       "versions": [
         {
           "version": "1.0.2",
@@ -44,21 +64,29 @@
           "manifest_version": 2
         }
       ],
-      "description": "Official French product language pack: menus, activity center, status bar, notifications, and the about dialog.",
-      "license": "MIT",
-      "homepage": "https://github.com/whitel1/resrch-plugins",
-      "repository": "https://github.com/whitel1/resrch-plugins",
-      "latest": {
-        "version": "1.0.2",
-        "package": "dist/app.resrch.language-pack-fr-1.0.2.rplugin",
-        "sha256": "a060d96b781bcefca13e62bb6bffb3dbc485c1c44190c4ae06b8af63abd0d7dd",
-        "byte_size": 4292,
-        "manifest_version": 2
-      }
+      "categories": [
+        "language"
+      ],
+      "keywords": [
+        "language",
+        "french",
+        "translation"
+      ]
     },
     {
       "id": "app.resrch.language-pack-zh-hant",
       "name": "繁體中文 (Traditional Chinese) Language Pack",
+      "description": "Official Traditional Chinese (Taiwan) product language pack: full product coverage with a zh-CN then English fallback chain.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.1",
+        "package": "dist/app.resrch.language-pack-zh-hant-1.0.1.rplugin",
+        "sha256": "ccb822337f0f955646865c12eef2a3c7fc053f45182a425066eb725a971799b3",
+        "byte_size": 46391,
+        "manifest_version": 2
+      },
       "versions": [
         {
           "version": "1.0.1",
@@ -75,31 +103,20 @@
           "manifest_version": 2
         }
       ],
-      "description": "Official Traditional Chinese (Taiwan) product language pack: full product coverage with a zh-CN then English fallback chain.",
-      "license": "MIT",
-      "homepage": "https://github.com/whitel1/resrch-plugins",
-      "repository": "https://github.com/whitel1/resrch-plugins",
-      "latest": {
-        "version": "1.0.1",
-        "package": "dist/app.resrch.language-pack-zh-hant-1.0.1.rplugin",
-        "sha256": "ccb822337f0f955646865c12eef2a3c7fc053f45182a425066eb725a971799b3",
-        "byte_size": 46391,
-        "manifest_version": 2
-      }
+      "categories": [
+        "language"
+      ],
+      "keywords": [
+        "language",
+        "chinese",
+        "traditional",
+        "taiwanese",
+        "translation"
+      ]
     },
     {
       "id": "app.resrch.markdown-toolkit",
       "name": "Markdown Toolkit",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "package": "dist/app.resrch.markdown-toolkit-1.0.0.rplugin",
-          "sha256": "71b82795595405cf734b67c3afc1463bed6606754890466a72addab9aa3d7d21",
-          "byte_size": 5143,
-          "manifest_version": 2,
-          "min_app_version": "0.2.0"
-        }
-      ],
       "description": "Official runtime reference plugin: a command, a transform, an analyzer, and a script-rendered sidebar panel.",
       "license": "MIT",
       "homepage": "https://github.com/whitel1/resrch-plugins",
@@ -109,23 +126,68 @@
         "package": "dist/app.resrch.markdown-toolkit-1.0.0.rplugin",
         "sha256": "71b82795595405cf734b67c3afc1463bed6606754890466a72addab9aa3d7d21",
         "byte_size": 5143,
-        "manifest_version": 2,
-        "min_app_version": "0.2.0"
+        "min_app_version": "0.2.0",
+        "manifest_version": 2
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.markdown-toolkit-1.0.0.rplugin",
+          "sha256": "71b82795595405cf734b67c3afc1463bed6606754890466a72addab9aa3d7d21",
+          "byte_size": 5143,
+          "min_app_version": "0.2.0",
+          "manifest_version": 2
+        }
+      ],
+      "categories": [
+        "writing"
+      ],
+      "keywords": [
+        "markdown",
+        "runtime",
+        "reference"
+      ],
+      "permissions": {
+        "workspace": {
+          "read": true,
+          "write": []
+        },
+        "http": {
+          "hosts": []
+        },
+        "kv": {
+          "read": true,
+          "write": true
+        },
+        "search": {
+          "query": false
+        },
+        "ai": {
+          "operations": []
+        },
+        "secrets": {
+          "names": []
+        },
+        "prompts": {
+          "input": false
+        },
+        "reader": {
+          "read": false
+        },
+        "events": {
+          "subscribe": []
+        },
+        "library": {
+          "read": false
+        },
+        "annotations": {
+          "write": false
+        }
       }
     },
     {
       "id": "app.resrch.status-kit",
       "name": "Status Kit",
-      "versions": [
-        {
-          "version": "1.1.0",
-          "package": "dist/app.resrch.status-kit-1.1.0.rplugin",
-          "sha256": "9f3a12025201ec3e5159da45a874165aea1f5970c45e6901839f4be9df314855",
-          "byte_size": 7904,
-          "manifest_version": 2,
-          "min_app_version": "0.3.0"
-        }
-      ],
       "description": "Official status bar reference plugin: a declarative status bar item whose command drives a persisted counter and a sidebar panel through the guest SDK.",
       "license": "MIT",
       "homepage": "https://github.com/whitel1/resrch-plugins",
@@ -135,23 +197,69 @@
         "package": "dist/app.resrch.status-kit-1.1.0.rplugin",
         "sha256": "9f3a12025201ec3e5159da45a874165aea1f5970c45e6901839f4be9df314855",
         "byte_size": 7904,
-        "manifest_version": 2,
-        "min_app_version": "0.3.0"
+        "min_app_version": "0.3.0",
+        "manifest_version": 2
+      },
+      "versions": [
+        {
+          "version": "1.1.0",
+          "package": "dist/app.resrch.status-kit-1.1.0.rplugin",
+          "sha256": "9f3a12025201ec3e5159da45a874165aea1f5970c45e6901839f4be9df314855",
+          "byte_size": 7904,
+          "min_app_version": "0.3.0",
+          "manifest_version": 2
+        }
+      ],
+      "categories": [
+        "reference"
+      ],
+      "keywords": [
+        "status-bar",
+        "runtime",
+        "reference",
+        "sdk"
+      ],
+      "permissions": {
+        "workspace": {
+          "read": false,
+          "write": []
+        },
+        "http": {
+          "hosts": []
+        },
+        "kv": {
+          "read": true,
+          "write": true
+        },
+        "search": {
+          "query": false
+        },
+        "ai": {
+          "operations": []
+        },
+        "secrets": {
+          "names": []
+        },
+        "prompts": {
+          "input": true
+        },
+        "reader": {
+          "read": false
+        },
+        "events": {
+          "subscribe": []
+        },
+        "library": {
+          "read": false
+        },
+        "annotations": {
+          "write": false
+        }
       }
     },
     {
       "id": "app.resrch.theme-pack",
       "name": "Resrch Official Themes",
-      "versions": [
-        {
-          "version": "1.1.0",
-          "package": "dist/app.resrch.theme-pack-1.1.0.rplugin",
-          "sha256": "4125e1b6066e63b03312b719b789c1fa139b29ea5f9424895e2b9501dc984356",
-          "byte_size": 5350,
-          "manifest_version": 2,
-          "min_app_version": "0.3.0"
-        }
-      ],
       "description": "Official UI themes: Nord, Rosé Pine, and Warm Paper, plus the Soft Dusk syntax-only source.",
       "license": "MIT",
       "homepage": "https://github.com/whitel1/resrch-plugins",
@@ -161,9 +269,28 @@
         "package": "dist/app.resrch.theme-pack-1.1.0.rplugin",
         "sha256": "4125e1b6066e63b03312b719b789c1fa139b29ea5f9424895e2b9501dc984356",
         "byte_size": 5350,
-        "manifest_version": 2,
-        "min_app_version": "0.3.0"
-      }
+        "min_app_version": "0.3.0",
+        "manifest_version": 2
+      },
+      "versions": [
+        {
+          "version": "1.1.0",
+          "package": "dist/app.resrch.theme-pack-1.1.0.rplugin",
+          "sha256": "4125e1b6066e63b03312b719b789c1fa139b29ea5f9424895e2b9501dc984356",
+          "byte_size": 5350,
+          "min_app_version": "0.3.0",
+          "manifest_version": 2
+        }
+      ],
+      "categories": [
+        "themes"
+      ],
+      "keywords": [
+        "theme",
+        "dark",
+        "light",
+        "syntax"
+      ]
     }
   ]
 }

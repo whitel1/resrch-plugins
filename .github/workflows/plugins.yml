@@ -46,9 +46,9 @@ jobs:
       - name: Check every plugin
         run: scripts/check-all.sh
       - name: Rebuild packages and merge the registry index
-        run: python3 scripts/build_registry.py
-      - name: Verify catalog pins and dist layout
-        run: python3 scripts/build_registry.py --verify
+        run: rdev plugin index --manifest ../resrch-app/i18n.toml
+      - name: Verify the catalog with the registry contract
+        run: rdev plugin index --verify
       # The in-app marketplace fetches registry/index.json from this site
       # (DEFAULT_REGISTRY_INDEX_URL in resrch-app) and resolves package paths
       # relative to it, so the index and dist/ must ship together.
