@@ -12,7 +12,7 @@ name = "Status Kit"
 name_key = "Plugin.app.resrch.status-kit.name"
 readme = "README.md"
 repository = "https://github.com/whitel1/resrch-plugins"
-version = "1.1.0"
+version = "1.2.0"
 # `[[status_bar_items]]` ships through the additive minor channel; the app
 # release that parses it is 0.3.0 (see docs/plugins/plugin-contract-versioning.md
 # in the resrch repository).

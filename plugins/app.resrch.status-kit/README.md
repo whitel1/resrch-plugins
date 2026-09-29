@@ -30,7 +30,10 @@ instead of silently dropping the item.
 
 ```
 plugin.toml           # manifest: command + [[status_bar_items]] + panel
-resrch-plugin.js      # vendored SDK (copy of sdk/resrch-plugin.js)
 main.js               # SDK-driven panel view and the tick command handler
 locales/              # en, zh-CN, ja
 ```
+
+Runtime helpers (`startInvocationLoop`, `makeTranslator`,
+`PluginHostError`, …) come from the host-generated `resrch.session.js`
+shim — nothing is vendored into the package.

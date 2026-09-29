@@ -27,8 +27,9 @@ cp -R plugins/app.resrch.markdown-toolkit plugins/<your.plugin.id>
 - every `[[status_bar_items]]` entry must reference a `[[commands]]` id
   declared by the same manifest; `text` is the initial display text and the
   plugin updates it at runtime with the `set_status_bar_item` action
-  (see the vendored SDK). Status bar items ship through the additive minor
-  channel, so declare the introducing app release via `min_app_version`.
+  (see the session SDK helpers below). Status bar items ship through the
+  additive minor channel, so declare the introducing app release via
+  `min_app_version`.
 - `[permissions.prompts] input = true` gates the `request_input` round trip
   (SDK `requestInput`): the host renders an input dialog and the promise
   resolves with the submitted text, or `null` on cancel. Gate the call on
@@ -66,15 +67,29 @@ cp -R plugins/app.resrch.markdown-toolkit plugins/<your.plugin.id>
   plugin in the Extensions panel. Full rules and format reference:
   `plugin-theme-author-guide.md` in the `resrch` repository.
 
-## The guest SDK
+## The session SDK helpers
 
-Do not hand-write the invocation poll loop or error decoding. Copy
-`../sdk/resrch-plugin.js` into your plugin root and import from
-`"./resrch-plugin.js"`: it wraps the host-written `resrch.session.js` shim
-with `startInvocationLoop`, `runInvocation`, `PluginHostError`/`toHostError`
-(structured error envelopes), `makeTranslator` for `Plugin.*` keys, and
-`supportedFeatures()` for the host's `api_features()` announcement. See
-`sdk/README.md`; `plugins/app.resrch.status-kit` is the reference consumer.
+Do not hand-write the invocation poll loop or error decoding. Since app
+0.3.0 the host-generated `resrch.session.js` shim exports the helper layer
+every runtime plugin needs — import it next to the raw surface:
+
+```js
+import {
+  startInvocationLoop,   // pull / dispatch / complete_invocation loop
+  runInvocation,         // one-shot variant for the wake handler
+  INVOCATION_WAKE_ACTION,
+  PluginHostError,       // structured error envelope decoding
+  toHostError,
+  makeTranslator,        // Plugin.* lookups with inline fallbacks
+  supportedFeatures,     // the host's api_features() announcement
+  requestInput, listThemes, currentTheme,
+} from "./resrch.session.js";
+```
+
+Nothing is vendored into the plugin package: the helpers ship with the host
+and can never drift from the surface they wrap. Normative types:
+`docs/plugins/resrch-plugin-api.d.ts` in the `resrch` repository. Reference
+consumer: `plugins/app.resrch.status-kit`.
 
 ## Validation
 

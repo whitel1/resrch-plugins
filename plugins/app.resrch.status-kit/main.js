@@ -2,27 +2,28 @@
 //
 // The manifest declares the status bar item and its command; this module is
 // the runtime side: a QuickJS (gpui-shell) panel that serves invocations
-// through the vendored SDK (`resrch-plugin.js`, copied from
-// `sdk/` in the resrch-plugins repository), persists the counter in plugin
-// kv storage, and updates the status bar item text with the
-// `set_status_bar_item` response action.
+// through the session SDK helpers the host exports from the generated
+// `resrch.session.js` shim, persists the counter in plugin kv storage, and
+// updates the status bar item text with the `set_status_bar_item` response
+// action.
 //
-// Host capabilities arrive through the generated `resrch.session.js` shim,
-// which binds every call to this plugin's session token. Host failures arrive
-// as rejected promises whose message carries the structured error envelope;
-// the SDK decodes them into `PluginHostError`.
+// The shim binds every host call to this plugin's session token. Host
+// failures arrive as rejected promises whose message carries the structured
+// error envelope; the helpers decode them into `PluginHostError`.
 import { View, div } from "gpui-kit";
 import { v_flex } from "gpui-base";
-import { pull_invocation } from "./resrch.session.js";
-import { kv_get, kv_put, log } from "./resrch.session.js";
 import {
   INVOCATION_WAKE_ACTION,
+  kv_get,
+  kv_put,
+  log,
   makeTranslator,
+  pull_invocation,
   requestInput,
   runInvocation,
   startInvocationLoop,
   supportedFeatures,
-} from "./resrch-plugin.js";
+} from "./resrch.session.js";
 /** @import { AsyncContext, Context } from "gpui-kit" */
 
 /** kv key holding the persisted counter value (kv is per-plugin). */
@@ -42,7 +43,7 @@ export default class StatusKitPanel extends View {
     this.features = supportedFeatures();
     this.stats = { handled: 0, lastInvocation: null, lastError: null };
     this.restoreCount(cx);
-    // The SDK loop pulls queued invocations, runs `dispatch`, and completes
+    // The helper loop pulls queued invocations, runs `dispatch`, and completes
     // each one against the host; the wake handler below only shortcuts it.
     startInvocationLoop(cx, (request, loopCx) => this.dispatch(request, loopCx));
     log("info", "Status Kit panel loaded");

@@ -193,14 +193,22 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.1.0",
-        "package": "dist/app.resrch.status-kit-1.1.0.rplugin",
-        "sha256": "9f3a12025201ec3e5159da45a874165aea1f5970c45e6901839f4be9df314855",
-        "byte_size": 7904,
+        "version": "1.2.0",
+        "package": "dist/app.resrch.status-kit-1.2.0.rplugin",
+        "sha256": "44b55343ae5c393d3d0fef10df68f8414a0be6f1314f8bd6060aa55e14cd8619",
+        "byte_size": 5263,
         "min_app_version": "0.3.0",
         "manifest_version": 2
       },
       "versions": [
+        {
+          "version": "1.2.0",
+          "package": "dist/app.resrch.status-kit-1.2.0.rplugin",
+          "sha256": "44b55343ae5c393d3d0fef10df68f8414a0be6f1314f8bd6060aa55e14cd8619",
+          "byte_size": 5263,
+          "min_app_version": "0.3.0",
+          "manifest_version": 2
+        },
         {
           "version": "1.1.0",
           "package": "dist/app.resrch.status-kit-1.1.0.rplugin",
