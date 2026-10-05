@@ -25,12 +25,15 @@ registry/
 dist/                       # committed .rplugin packages the index pins
 scripts/                    # check / package / catalog build entry points
 docs/authoring.md           # how to write and submit a plugin
+docs/resrch-plugin.d.ts     # IntelliSense reference for the session shim surface
 ```
 
-Every directory under `plugins/` is one plugin, named after its manifest id.
-Community submissions land in the same tree through review; the registry
-builder (`rdev plugin index`, owned by the `rdev` toolchain and typed by the
-`plugin-registry-index-v1` contract) records the maintainer set per entry.
+Every directory directly under `plugins/` is one published plugin, named
+after its manifest id; community submissions are staged under
+`plugins/community/` (validated by CI, not yet published) and promoted to
+the top level after review. The registry builder (`rdev plugin index`, owned
+by the `rdev` toolchain and typed by the `plugin-registry-index-v1`
+contract) records the maintainer set per entry.
 
 ## Plugin kinds
 
@@ -64,9 +67,12 @@ GitHub Pages, the default source the in-app marketplace fetches
 ## Submitting a community plugin
 
 Open a PR adding `plugins/community/<your-plugin-id>/`. CI must pass
-`rdev plugin check` and a maintainer review of the requested permissions and
-declared resources. See `docs/authoring.md` for the manifest rules, the
-`Plugin.*` localization namespace, and the packaging checklist.
+`rdev plugin check` (community plugins are validated exactly like official
+ones) and a maintainer review of the requested permissions and declared
+resources; on acceptance a maintainer promotes the plugin to the top level
+of `plugins/`, which is what publishes it to the catalog. See
+`docs/authoring.md` for the manifest rules, the `Plugin.*` localization
+namespace, and the packaging checklist.
 
 ## Documentation
 
@@ -75,8 +81,9 @@ User-facing documentation lives on the website: the
 page summarizes this repository's catalog rules, signing, and publishing
 pipeline (Chinese: [插件注册表与分发](https://resrch.ai/zh-cn/docs/development/plugin-registry/)),
 and the [official plugin catalog](https://resrch.ai/en/docs/reference/plugin-catalog/)
-listing is regenerated from `registry/index.json` on every change. This
-README and `docs/authoring.md` remain the repository-side working documents.
+listing is regenerated from the committed `registry/index.json` whenever
+the docs site rebuilds. This README and `docs/authoring.md` remain the
+repository-side working documents.
 
 ## License
 

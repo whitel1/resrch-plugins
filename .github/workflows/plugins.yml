@@ -29,6 +29,12 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  # Pinned rdev revision: the catalog build must be reproducible, and the
+  # pinned revision also decides the index serializer the freshness gate
+  # compares against. Bump deliberately — push rdev first, then this pin.
+  RDEV_REV: dceb40066455887ecabd6a4213894713706abb14
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -36,16 +42,38 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Both checkouts live side by side inside the workspace, mirroring the
+      # local sibling layout: steps run from resrch-plugins/ and reference the
+      # app checkout as ../resrch-app, exactly like scripts/check-all.sh does.
       - uses: actions/checkout@v4
+        with:
+          path: resrch-plugins
       - uses: actions/checkout@v4
         with:
           repository: whitel1/resrch-app
+          # No release tags exist yet, so this intentionally floats with the
+          # app's default branch: locale coverage must track the live product
+          # contract. When app release tags appear, pin to the newest tag.
           path: resrch-app
-      - name: Install rdev from source
-        run: cargo install --locked --git https://github.com/whitel1/rdev rdev
+      - name: Cache the pinned rdev binary
+        id: cache-rdev
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/rdev
+          key: rdev-bin-${{ env.RDEV_REV }}
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        if: steps.cache-rdev.outputs.cache-hit != 'true'
+      - name: Install the pinned rdev toolchain
+        if: steps.cache-rdev.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          cargo install --locked --git https://github.com/whitel1/rdev --rev "$RDEV_REV" rdev
       - name: Check every plugin
+        working-directory: resrch-plugins
         run: scripts/check-all.sh
       - name: Rebuild and merge the registry index (signed on main)
+        working-directory: resrch-plugins
         env:
           # Private half of the catalog signing key; public half:
           # OX3DVL0jACLzomauo5DqJaAt/aZdbrECRVQ8Ng13iSE=
@@ -66,6 +94,7 @@ jobs:
           fi
           rdev plugin index "${args[@]}"
       - name: Verify the catalog with the registry contract
+        working-directory: resrch-plugins
         run: |
           set -euo pipefail
           if [ -f registry/index.sig.json ]; then
@@ -74,11 +103,30 @@ jobs:
           else
             rdev plugin index --verify
           fi
+      - name: Fail when the committed catalog is stale
+        # The catalog (registry/index.json plus pinned dist/ artifacts) is
+        # committed on purpose so a fresh clone is deployable; the rebuild
+        # above must therefore be a no-op against the committed tree. A dirty
+        # tree means someone bumped plugins/ without running and committing
+        # the index build — such a deploy would publish artifacts that exist
+        # nowhere in git and rotate their digests on every later rebuild.
+        working-directory: resrch-plugins
+        run: |
+          set -euo pipefail
+          status="$(git status --porcelain -- registry dist)"
+          if [ -n "$status" ]; then
+            echo "Rebuilding the catalog changed tracked or committed files:" >&2
+            printf '%s\n' "$status" >&2
+            echo "Run 'rdev plugin index --manifest <resrch-app>/i18n.toml' locally and" >&2
+            echo "commit registry/index.json plus any new dist/*.rplugin." >&2
+            exit 1
+          fi
       # The in-app marketplace fetches registry/index.json from this site
       # (DEFAULT_REGISTRY_INDEX_URL in resrch-app) and resolves package paths
       # relative to it, so the index and dist/ must ship together.
       - name: Stage the catalog site
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        working-directory: resrch-plugins
         run: |
           mkdir -p _site/registry _site/dist
           cp registry/index.json _site/registry/

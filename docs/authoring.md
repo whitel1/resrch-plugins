@@ -36,10 +36,10 @@ cp -R plugins/app.resrch.markdown-toolkit plugins/<your.plugin.id>
   `supportsFeature("request_input")`; the permission is reviewed at
   activation like every other group.
 - `[[resources.settings]]` entries render on the settings dialog's Plugins
-  page and persist to the plugin settings file. Known gap: there is no guest
-  read of stored values yet (a future `settings_get` host call); keep
-  settings that the plugin does not need to act on at runtime, or track both
-  sides in kv until then.
+  page and persist to the plugin settings file. Runtime code reads stored
+  values back with the `settings_get` host call (gate on
+  `supportsFeature("settings_read")`; `value: null` means unset — apply the
+  manifest default yourself).
 - resource paths stay inside the plugin root; no absolute paths, no `..`.
 - localization keys stay in the `Plugin.<your.plugin.id>.` namespace and must
   be defined in at least one contributed locale file.
@@ -88,8 +88,9 @@ import {
 
 Nothing is vendored into the plugin package: the helpers ship with the host
 and can never drift from the surface they wrap. Normative types:
-`docs/plugins/resrch-plugin-api.d.ts` in the `resrch` repository. Reference
-consumer: `plugins/app.resrch.status-kit`.
+`docs/plugins/resrch-plugin-api.d.ts` in the `resrch` repository;
+`docs/resrch-plugin.d.ts` in this repository is a local IntelliSense copy
+of the same surface. Reference consumer: `plugins/app.resrch.status-kit`.
 
 ## Validation
 
@@ -110,7 +111,11 @@ for already-pinned versions, a new version must be strictly newer than the
 published latest, and any change under a pinned `(id, version)` — package
 content or `min_app_version` — fails the build, so bump the version instead.
 Entry metadata (name, description, categories, keywords, permissions …)
-refreshes without a bump. A push to `main` signs the index (Ed25519,
+refreshes without a bump. Always run the index build and commit
+`registry/index.json` plus any new `dist/*.rplugin` in the same change: CI
+rebuilds the catalog and fails the run when the rebuild is not a no-op
+against the committed tree, so a version bump without committed build
+outputs cannot merge or deploy. A push to `main` signs the index (Ed25519,
 `registry/index.sig.json`; see `registry/README.md`) and deploys the index
 plus packages to GitHub Pages, which is the default source the in-app
 marketplace fetches — the app verifies the signature before trusting the
@@ -119,13 +124,21 @@ accepts them solely through the `RESRCH_PLUGIN_REGISTRY_URL` override.
 
 ## Community submissions
 
-1. fork, add `plugins/<your.plugin.id>/`, keep the permissions minimal,
-2. `scripts/check-all.sh` must pass in CI,
+1. fork, add `plugins/community/<your.plugin.id>/`, keep the permissions
+   minimal,
+2. `scripts/check-all.sh` must pass in CI — it validates community plugins
+   exactly like official ones (contract, locale, coverage),
 3. a maintainer reviews requested permissions and declared resources before
    merge; anything executing guest code gets a closer review than pure
    resource packs,
 4. keep `plugin.toml` metadata accurate (`description`, `license`,
    `repository`); the registry index mirrors it verbatim.
+
+Plugins under `plugins/community/` are validated but **not published**: the
+catalog builder only scans the top level of `plugins/`. After review a
+maintainer promotes a submission by moving it to `plugins/<your.plugin.id>/`,
+running the index build above, and committing the result — that is the
+moment it enters the signed catalog.
 
 ## Documentation
 

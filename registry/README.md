@@ -19,7 +19,13 @@ silently drop it.
 
 CI deploys `registry/index.json` plus `dist/` to GitHub Pages on every push
 to `main`; the in-app marketplace fetches the index from that site and
-resolves the relative `dist/…` package paths against it.
+resolves the relative `dist/…` package paths against it. The catalog is
+**committed, not built on the fly**: CI rebuilds it from `plugins/` and
+fails the run when the rebuild changes anything under `registry/` or
+`dist/`, so every deploy is reproducible from a fresh clone and a version
+bump always lands together with its committed package. Run
+`rdev plugin index --manifest <resrch-app>/i18n.toml` locally and commit
+`registry/index.json` plus any new `dist/*.rplugin` in the same change.
 
 ## Signing
 
