@@ -7,10 +7,11 @@ Taiwan/Hong Kong/Macau users (`zh-Hant`, script-based so `zh-Hant-TW`,
 ## Coverage
 
 `coverage = "complete"`: all product keys (2,548 at pack version 1.0.0,
-2,669 at 1.0.1) are translated. When the product grows and this pack lags,
-missing keys fall back through the app's declared chain —
-`zh-Hant → zh-CN → en` — so the UI stays Chinese while the pack catches up;
-the Extensions panel reports the exact coverage percentage.
+2,669 at 1.0.1–1.0.2, 3,065 at 1.0.3) are translated. When the product
+grows and this pack lags, missing keys fall back through the app's
+declared chain — `zh-Hant → zh-CN → en` — so the UI stays Chinese while
+the pack catches up; the Extensions panel reports the exact coverage
+percentage.
 
 The locale also participates in platform-locale negotiation: with the pack
 enabled, a `zh-Hant` system preference selects it at startup (the `ui.locale`

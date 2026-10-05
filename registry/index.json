@@ -42,13 +42,20 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.2",
-        "package": "dist/app.resrch.language-pack-fr-1.0.2.rplugin",
-        "sha256": "a060d96b781bcefca13e62bb6bffb3dbc485c1c44190c4ae06b8af63abd0d7dd",
-        "byte_size": 4292,
+        "version": "1.0.3",
+        "package": "dist/app.resrch.language-pack-fr-1.0.3.rplugin",
+        "sha256": "7de7c5fe5b3a440d3679664dd482f8c6aa6d7d95128dea7e3018c514f3ae4377",
+        "byte_size": 4179,
         "manifest_version": 2
       },
       "versions": [
+        {
+          "version": "1.0.3",
+          "package": "dist/app.resrch.language-pack-fr-1.0.3.rplugin",
+          "sha256": "7de7c5fe5b3a440d3679664dd482f8c6aa6d7d95128dea7e3018c514f3ae4377",
+          "byte_size": 4179,
+          "manifest_version": 2
+        },
         {
           "version": "1.0.2",
           "package": "dist/app.resrch.language-pack-fr-1.0.2.rplugin",
@@ -81,13 +88,20 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.2",
-        "package": "dist/app.resrch.language-pack-zh-hant-1.0.2.rplugin",
-        "sha256": "b814f0b6e64feb6f4297ec76226a49b566e34c1f8e9f8287553baf155d079e7d",
-        "byte_size": 46392,
+        "version": "1.0.3",
+        "package": "dist/app.resrch.language-pack-zh-hant-1.0.3.rplugin",
+        "sha256": "7854470b93822865ef7049cefa77aa72f3a1eb108244220df25b0b157899d175",
+        "byte_size": 54378,
         "manifest_version": 2
       },
       "versions": [
+        {
+          "version": "1.0.3",
+          "package": "dist/app.resrch.language-pack-zh-hant-1.0.3.rplugin",
+          "sha256": "7854470b93822865ef7049cefa77aa72f3a1eb108244220df25b0b157899d175",
+          "byte_size": 54378,
+          "manifest_version": 2
+        },
         {
           "version": "1.0.2",
           "package": "dist/app.resrch.language-pack-zh-hant-1.0.2.rplugin",

@@ -1,10 +1,3 @@
-# Resrch product language pack — Français
-#
-# Partial coverage: the product chrome (menus, activity center, status bar,
-# notifications, about dialog, shared controls, panel titles). Missing keys
-# fall back to the English catalog at runtime.
-Locale.code: "fr"
-Locale.display_name: "Français"
 App.activity_center.active: "Actif"
 App.activity_center.attention: "Attention"
 App.activity_center.cancel: "Annuler"
@@ -109,6 +102,8 @@ App.statusbar.no_active_selection: "Aucune sélection active"
 App.statusbar.reader_item: "Élément %{title}"
 App.statusbar.reader_library: "Bibliothèque du lecteur"
 App.statusbar.warnings: "Avertissements %{count}"
+Locale.code: "fr"
+Locale.display_name: "Français"
 Plugin.app.resrch.language-pack-fr.name: "Français (French) Language Pack"
 UI.about.app_name: "Resrch App"
 UI.about.available_whats_new: "Disponible dans"
@@ -177,4 +172,3 @@ UI.menu.theme: "Thème"
 UI.panels.explorer: "Explorateur"
 UI.panels.reader: "Lecteur"
 UI.panels.right_panel: "Panneau droit"
-UI.panels.terminal: "Terminal"
