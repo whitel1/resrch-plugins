@@ -16,6 +16,7 @@ that content with `rdev plugin check` / `rdev plugin package`.
 plugins/
   app.resrch.markdown-toolkit/     # runtime reference plugin (command/transform/analyzer/panel)
   app.resrch.status-kit/           # status bar reference plugin (declarative item + SDK-driven panel)
+  app.resrch.benchmark-samples/    # benchmark provider reference (contributes rows to the pending review queue)
   app.resrch.theme-pack/           # Nord, Rosé Pine, Warm Paper UI themes
   app.resrch.accessibility-pack/   # colorblind-safe & low-stimulus editor packs
   app.resrch.language-pack-fr/     # French product language pack (partial)
@@ -41,6 +42,7 @@ contract) records the maintainer set per entry.
 | --- | --- | --- |
 | Resource | themes, theme packs, locales, product language packs, settings | `app.resrch.theme-pack` |
 | Runtime (shell) | commands, transforms, analyzers, panels, status bar items | `app.resrch.status-kit` |
+| Runtime (shell) | `[[benchmark_providers]]` contributions (rows land in the pending review queue) | `app.resrch.benchmark-samples` |
 | Hybrid | both of the above | `app.resrch.markdown-toolkit` |
 
 ## Validate and package

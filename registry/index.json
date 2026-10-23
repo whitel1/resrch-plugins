@@ -35,6 +35,88 @@
       ]
     },
     {
+      "id": "app.resrch.benchmark-samples",
+      "name": "Benchmark Samples",
+      "description": "Benchmark provider reference: contributes curated landmark ImageNet-1k results through the pending review queue.",
+      "license": "MIT",
+      "homepage": "https://github.com/whitel1/resrch-plugins",
+      "repository": "https://github.com/whitel1/resrch-plugins",
+      "latest": {
+        "version": "1.0.0",
+        "package": "dist/app.resrch.benchmark-samples-1.0.0.rplugin",
+        "sha256": "c1957c6dea6de0d120ddc5295275919078a2cc655ded1d6f63ef5811feb9105b",
+        "byte_size": 4738,
+        "min_app_version": "0.2.0",
+        "manifest_version": 2
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "package": "dist/app.resrch.benchmark-samples-1.0.0.rplugin",
+          "sha256": "c1957c6dea6de0d120ddc5295275919078a2cc655ded1d6f63ef5811feb9105b",
+          "byte_size": 4738,
+          "min_app_version": "0.2.0",
+          "manifest_version": 2
+        }
+      ],
+      "categories": [
+        "providers"
+      ],
+      "keywords": [
+        "benchmark",
+        "provider",
+        "reference",
+        "imagenet"
+      ],
+      "permissions": {
+        "workspace": {
+          "read": false,
+          "write": []
+        },
+        "editor": {
+          "read": false,
+          "write": false
+        },
+        "http": {
+          "hosts": []
+        },
+        "kv": {
+          "read": false,
+          "write": false
+        },
+        "search": {
+          "query": false
+        },
+        "ai": {
+          "operations": []
+        },
+        "agent": {
+          "skills": false
+        },
+        "secrets": {
+          "names": []
+        },
+        "prompts": {
+          "input": false
+        },
+        "reader": {
+          "read": false
+        },
+        "events": {
+          "subscribe": []
+        },
+        "library": {
+          "read": false
+        },
+        "annotations": {
+          "write": false
+        },
+        "benchmark": {
+          "contribute": true
+        }
+      }
+    },
+    {
       "id": "app.resrch.language-pack-fr",
       "name": "Français (French) Language Pack",
       "description": "Official French product language pack: menus, activity center, status bar, notifications, and the about dialog.",
@@ -88,13 +170,20 @@
       "homepage": "https://github.com/whitel1/resrch-plugins",
       "repository": "https://github.com/whitel1/resrch-plugins",
       "latest": {
-        "version": "1.0.3",
-        "package": "dist/app.resrch.language-pack-zh-hant-1.0.3.rplugin",
-        "sha256": "7854470b93822865ef7049cefa77aa72f3a1eb108244220df25b0b157899d175",
-        "byte_size": 54378,
+        "version": "1.0.4",
+        "package": "dist/app.resrch.language-pack-zh-hant-1.0.4.rplugin",
+        "sha256": "7bb7fe450d0937a5910993041caf98787b00105ca48e99f326e3f29fdbe30b71",
+        "byte_size": 64061,
         "manifest_version": 2
       },
       "versions": [
+        {
+          "version": "1.0.4",
+          "package": "dist/app.resrch.language-pack-zh-hant-1.0.4.rplugin",
+          "sha256": "7bb7fe450d0937a5910993041caf98787b00105ca48e99f326e3f29fdbe30b71",
+          "byte_size": 64061,
+          "manifest_version": 2
+        },
         {
           "version": "1.0.3",
           "package": "dist/app.resrch.language-pack-zh-hant-1.0.3.rplugin",
@@ -173,6 +262,10 @@
           "read": true,
           "write": []
         },
+        "editor": {
+          "read": false,
+          "write": false
+        },
         "http": {
           "hosts": []
         },
@@ -185,6 +278,9 @@
         },
         "ai": {
           "operations": []
+        },
+        "agent": {
+          "skills": false
         },
         "secrets": {
           "names": []
@@ -203,6 +299,9 @@
         },
         "annotations": {
           "write": false
+        },
+        "benchmark": {
+          "contribute": false
         }
       }
     },
@@ -253,6 +352,10 @@
           "read": false,
           "write": []
         },
+        "editor": {
+          "read": false,
+          "write": false
+        },
         "http": {
           "hosts": []
         },
@@ -265,6 +368,9 @@
         },
         "ai": {
           "operations": []
+        },
+        "agent": {
+          "skills": false
         },
         "secrets": {
           "names": []
@@ -283,6 +389,9 @@
         },
         "annotations": {
           "write": false
+        },
+        "benchmark": {
+          "contribute": false
         }
       }
     },

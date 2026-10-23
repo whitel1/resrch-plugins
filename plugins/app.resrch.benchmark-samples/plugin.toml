@@ -1,0 +1,64 @@
+manifest_version = 2
+
+# Official benchmark-provider reference plugin: the manifest declares one
+# `[[benchmark_providers]]` contribution whose refresh command answers with
+# `contribute_benchmark_results` actions. Rows land in the host's pending
+# review queue as `external` results sourced to this plugin — never confirmed
+# data, exactly like every plugin contribution.
+[plugin]
+id = "app.resrch.benchmark-samples"
+name = "Benchmark Samples"
+version = "1.0.0"
+description = "Benchmark provider reference: contributes curated landmark ImageNet-1k results through the pending review queue."
+homepage = "https://github.com/whitel1/resrch-plugins"
+authors = ["Resrch"]
+categories = ["providers"]
+keywords = ["benchmark", "provider", "reference", "imagenet"]
+license = "MIT"
+name_key = "Plugin.app.resrch.benchmark-samples.name"
+readme = "README.md"
+repository = "https://github.com/whitel1/resrch-plugins"
+# `[[benchmark_providers]]` ships through the benchmark_providers contract
+# feature; hosts older than this release reject the manifest fail-closed.
+min_app_version = "0.2.0"
+
+[runtime]
+engine = "shell"
+module = "main.js"
+
+# Contribution actions are permission-gated: without this grant the host
+# drops every `contribute_benchmark_results` action the script emits.
+[permissions.benchmark]
+contribute = true
+
+[[resources.locales]]
+locale = "en"
+path = "locales/en.yml"
+
+[[resources.locales]]
+locale = "zh-CN"
+path = "locales/zh-CN.yml"
+
+[[resources.locales]]
+locale = "ja"
+path = "locales/ja.yml"
+
+[[commands]]
+description = "Contribute the sample benchmark result rows to the pending review queue."
+id = "benchmark-samples.refresh"
+palette = true
+title = "Contribute Sample Benchmark Results"
+title_key = "Plugin.app.resrch.benchmark-samples.commands.refresh"
+
+[[benchmark_providers]]
+id = "benchmark-samples"
+title = "Landmark ImageNet results (sample)"
+title_key = "Plugin.app.resrch.benchmark-samples.providers.samples"
+command = "benchmark-samples.refresh"
+
+[[panels]]
+description = "Sample provider panel: invocation activity and the row set it contributes."
+id = "benchmark-samples.overview"
+placement = "sidebar"
+title = "Benchmark Samples"
+title_key = "Plugin.app.resrch.benchmark-samples.panels.overview"

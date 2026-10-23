@@ -7,7 +7,7 @@ Taiwan/Hong Kong/Macau users (`zh-Hant`, script-based so `zh-Hant-TW`,
 ## Coverage
 
 `coverage = "complete"`: all product keys (2,548 at pack version 1.0.0,
-2,669 at 1.0.1–1.0.2, 3,065 at 1.0.3) are translated. When the product
+2,669 at 1.0.1–1.0.2, 3,065 at 1.0.3, 3,587 at 1.0.4) are translated. When the product
 grows and this pack lags, missing keys fall back through the app's
 declared chain — `zh-Hant → zh-CN → en` — so the UI stays Chinese while
 the pack catches up; the Extensions panel reports the exact coverage
@@ -20,7 +20,7 @@ setting stays empty to keep following the platform).
 ## Regeneration
 
 The catalog is generated from the zh-CN product catalog with OpenCC `s2twp`
-plus a terminology pass (檔案/設定/預設/支援/列印/匯入/匯出/後台/目前/拖曳/權限…).
+plus a terminology pass (檔案/設定/預設/支援/列印/匯入/匯出/後台/目前/拖曳/權限/資訊/智慧/文件/插件/審核/復原/台…).
 Character conversion is mechanical; nuanced strings should still get a human
 terminology review:
 
