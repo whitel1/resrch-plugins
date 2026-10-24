@@ -89,8 +89,10 @@ import {
 Nothing is vendored into the plugin package: the helpers ship with the host
 and can never drift from the surface they wrap. Normative types:
 `docs/plugins/resrch-plugin-api.d.ts` in the `resrch` repository;
-`docs/resrch-plugin.d.ts` in this repository is a local IntelliSense copy
-of the same surface. Reference consumer: `plugins/app.resrch.status-kit`.
+`docs/resrch-plugin.d.ts` in this repository is a verbatim IntelliSense copy
+of that file — when the normative surface changes, re-copy it unchanged
+(`cp ../resrch/docs/plugins/resrch-plugin-api.d.ts docs/resrch-plugin.d.ts`).
+Reference consumer: `plugins/app.resrch.status-kit`.
 
 ## Validation
 
