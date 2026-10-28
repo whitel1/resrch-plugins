@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Validates every plugin in plugins/ (plus staged community submissions under
-# plugins/community/) against the current contract.
+# plugins/community/) against the current contract via `rdev plugin check --all`.
 #
 # Product-locale coverage checks need the product i18n manifest, so the script
 # looks for a resrch-app checkout beside this repository and passes --manifest
@@ -37,21 +37,4 @@ fi
 # Community plugins under plugins/community/ are validated but not published:
 # the catalog builder only scans plugins/ one level deep, so a maintainer
 # promotes a submission by moving it to plugins/ top level.
-shopt -s nullglob
-plugin_dirs=(plugins/*/ plugins/community/*/)
-shopt -u nullglob
-
-status=0
-for plugin_dir in "${plugin_dirs[@]}"; do
-  [[ -f "$plugin_dir/plugin.toml" ]] || continue
-  echo "== rdev plugin check $plugin_dir"
-  if ! rdev plugin check "${manifest_args[@]}" "$plugin_dir"; then
-    status=1
-  fi
-done
-
-if [[ $status -ne 0 ]]; then
-  echo "plugin check failed" >&2
-  exit 1
-fi
-echo "all plugins passed"
+exec rdev plugin check "${manifest_args[@]}" --all plugins plugins/community
