@@ -54,6 +54,10 @@ jobs:
           # No release tags exist yet, so this intentionally floats with the
           # app's default branch: locale coverage must track the live product
           # contract. When app release tags appear, pin to the newest tag.
+          # Explicit ref: an unnamed checkout resolves the default branch via
+          # the REST API, which intermittently 404s for this account and
+          # killed the 10-29 run; a literal ref goes through git transport.
+          ref: main
           path: resrch-app
       - name: Cache the pinned rdev binary
         id: cache-rdev
